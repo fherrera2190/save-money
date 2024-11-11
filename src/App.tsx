@@ -1,17 +1,20 @@
-import { CardProduct } from "./components/CardProduct";
+import { ListProducts } from "./components/ListProducts";
 import { Navbar } from "./components/Navbar";
-import { Search } from "./components/Search";
+import { OptionsMarket } from "./components/OptionsMarket";
 
 function App() {
   console.log(window.matchMedia("(prefers-color-scheme: dark)").matches);
   if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
     document.querySelector("html")!.classList.add("dark");
   }
+
   return (
     <>
       <Navbar />
-      <Search />
-      <CardProduct />
+      <div className="flex flex-grow">
+        <OptionsMarket />
+        <ListProducts />
+      </div>
     </>
   );
 }

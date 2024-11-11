@@ -3,8 +3,6 @@ import { IconCart } from "./IconCart";
 export const CardProduct = () => {
   console.log("pase por card");
   return (
-    <div className="grid h-screen bg-gray-800 lg:grid-cols-3 justify-center">
-      <div></div>
       <div className="group border-gray-100/30 flex w-full max-w-xs flex-col self-center overflow-hidden rounded-lg border bg-gray-700 shadow-md">
         <a
           className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
@@ -60,6 +58,5 @@ export const CardProduct = () => {
           </a>
         </div>
       </div>
-    </div>
   );
 };
