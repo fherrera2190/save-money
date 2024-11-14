@@ -1,4 +1,5 @@
 import { Product } from "../interfaces/Product";
+import { IconCart } from "./IconCart";
 
 export const ShowCardProduct = ({ product }: { product: Product }) => {
   return (
