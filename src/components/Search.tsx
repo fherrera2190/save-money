@@ -1,16 +1,23 @@
 import { useState } from "react";
 import { SearchProps } from "../interfaces/SearchProps";
 
-export const Search = ({ getSearch }:SearchProps) => {
-  const [text, setText] = useState("");
+export const Search = ({ getSearch }: SearchProps) => {
+  const [formData, setFormData] = useState({
+    search: "",
+  });
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    getSearch(text.trim());
+    console.log(formData.search);
+    getSearch(formData.search.trim());
   };
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   return (
@@ -36,10 +43,11 @@ export const Search = ({ getSearch }:SearchProps) => {
         </div>
         <input
           type="text"
+          name="search"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Search user"
-          value={text}
-          onChange={handleOnChange}
+          onChange={handleChange}
+          value={formData.search}
         />
       </div>
     </form>

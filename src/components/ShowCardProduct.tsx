@@ -57,7 +57,7 @@ export const ShowCardProduct = ({ product }: { product: Product }) => {
           className="hover:border-white/40 flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
         >
           <IconCart />
-          Add to cart
+          Add to list
         </a>
       </div>
     </div>

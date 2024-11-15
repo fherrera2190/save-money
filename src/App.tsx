@@ -1,42 +1,37 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ListProducts } from "./components/ListProducts";
 import { Navbar } from "./components/Navbar";
 import { OptionsMarket } from "./components/OptionsMarket";
 import { config } from "./config/app.config";
+import { useFetch } from "./hooks/useFetch";
+import { Product } from "./interfaces/Product";
+
+const url = `${config.VITE_API_URL}/?q=`;
 
 function App() {
   //console.log(window.matchMedia("(prefers-color-scheme: dark)").matches);
   if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
     document.querySelector("html")!.classList.add("dark");
   }
-  const [search, setSearch] = useState<string>("");
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [search, setSearch] = useState<string>(url + "carne%20picada");
+
+  const { data, isLoading,   } = useFetch<Product[]>(search);
 
   const getSearch = (text: string) => {
-    setSearch(text);
+    if (text === "") {
+      console.log("vacio");
+      return;
+    }
+    setSearch(url + text);
   };
-
-  useEffect(() => {
-    setIsLoading(false);
-    const getData = async () => {
-      if (search === "") return;
-      const url = `${config.VITE_API_URL}/?q=${search}`;
-      const resp = await fetch(url);
-      const data = await resp.json();
-      setData(data);
-      setIsLoading(true);
-    };
-    getData();
-  }, [search]);
 
   return (
     <>
       <Navbar />
       <div className="flex flex-grow">
         <OptionsMarket getSearch={getSearch} />
-        {isLoading ? (
-          <ListProducts products={data} isLoading={isLoading} />
+        {!isLoading ? (
+          <ListProducts products={data as Product[]} isLoading={isLoading} />
         ) : (
           <div
             role="status"
