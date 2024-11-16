@@ -1,20 +1,13 @@
 import { useContext } from "react";
-import { ListProducts } from "./components/ListProducts";
-import { Navbar } from "./components/Navbar";
-import { OptionsMarket } from "./components/OptionsMarket";
-import { config } from "./config/app.config";
-import { Product } from "./interfaces/Product";
-import { ShearchContext } from "./context/SearchContext";
+import { ListProducts } from "../components/ListProducts";
+import { OptionsMarket } from "../components/OptionsMarket";
+import { ShearchContext } from "../context/SearchContext";
+import { Product } from "../interfaces/Product";
+import { MainLayout } from "../layouts/MainLayout";
 
-const url = `${config.VITE_API_URL}/?q=`;
-
-function App() {
-  //console.log(window.matchMedia("(prefers-color-scheme: dark)").matches);
-  if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    document.querySelector("html")!.classList.add("dark");
-  }
-
-  const { setSearch, data, isLoading } = useContext(ShearchContext);
+export const SearchPage = () => {
+  const { setSearch, data, isLoading, url } =
+    useContext(ShearchContext);
 
   const getSearch = (text: string) => {
     if (text === "") {
@@ -22,12 +15,11 @@ function App() {
     }
     setSearch(url + text);
   };
-
   return (
-    <>
-      <Navbar />
+    <MainLayout>
       <div className="flex flex-grow">
         <OptionsMarket getSearch={getSearch} />
+
         {!isLoading ? (
           <ListProducts products={data as Product[]} isLoading={isLoading} />
         ) : (
@@ -55,8 +47,6 @@ function App() {
           </div>
         )}
       </div>
-    </>
+    </MainLayout>
   );
-}
-
-export default App;
+};

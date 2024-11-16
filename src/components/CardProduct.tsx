@@ -44,8 +44,20 @@ export const CardProduct = ({ product }: { product: Product }) => {
         </a>
         <div className="mt-2 mb-5 flex items-center justify-between">
           <p>
-            <span className="text-3xl font-bold text-white">${product.Price}</span>
-            <span className="text-sm text-white line-through">${product.ListPrice}</span>
+            {product.Price === product.ListPrice ? (
+              <span className="text-3xl font-bold text-white">
+                ${product.Price}
+              </span>
+            ) : (
+              <>
+                <span className="text-3xl font-bold text-white">
+                  ${product.Price}
+                </span>
+                <span className="text-sm text-white line-through">
+                  ${product.ListPrice}
+                </span>
+              </>
+            )}
           </p>
         </div>
         <a

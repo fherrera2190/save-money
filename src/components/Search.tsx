@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { SearchProps } from "../interfaces/SearchProps";
+ interface SearchProps {
+  getSearch: (text: string) => void;
+}
+
 
 export const Search = ({ getSearch }: SearchProps) => {
   const [formData, setFormData] = useState({
