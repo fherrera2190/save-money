@@ -19,14 +19,22 @@ export const useFetch = <T>(url: string): Params<T> => {
 
     setLoading(true);
     const fetchData = async () => {
-
       try {
         const resp = await fetch(url, controller);
         if (!resp.ok) {
           throw new Error("Error en la petición");
         }
         const jsonData = await resp.json();
-        setState(jsonData);
+
+        const filteredResults = jsonData?.reduce((acc, item) => {
+          const ean = item.ean;
+          if (!acc[ean]) {
+            acc[ean] = [];
+          }
+          acc[ean].push(item);
+          return acc;
+        }, {});
+        setState(filteredResults);
         setHasError(null);
       } catch (error) {
         setHasError(error as ErrorType);
@@ -40,8 +48,6 @@ export const useFetch = <T>(url: string): Params<T> => {
       controller.abort();
     };
   }, [url]);
-
-  
 
   return { data: state, isLoading, hasError };
 };

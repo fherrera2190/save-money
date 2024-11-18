@@ -1,4 +1,4 @@
-import { ContainerShop } from "./ContainerShop";
+// import { ContainerShop } from "./ContainerShop";
 import { Search } from "./Search";
 
 interface OptionsMarketProps {
@@ -7,9 +7,9 @@ interface OptionsMarketProps {
 
 export const OptionsMarket = ({ getSearch }: OptionsMarketProps) => {
   return (
-    <div className=" z-10 bg-white rounded-lg shadow w-60 dark:bg-gray-700">
+    <div className="mx-auto my-3 z-10 bg-white rounded-lg shadow w-full dark:bg-gray-700">
       <Search getSearch={getSearch} />
-      <ContainerShop />
+      {/* <ContainerShop /> */}
     </div>
   );
 };
