@@ -1,21 +1,21 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { ListProducts } from "../components/ListProducts";
 import { MainLayout } from "../layouts/MainLayout";
 import { ShearchContext } from "../context/SearchContext";
 import { SpinnerLoading } from "../components/SpinnerLoading";
 import { useNavigate, useParams } from "react-router-dom";
+import { ErrorPage } from "./ErrorPage";
 
 export const ViewProductsPage = () => {
   const { ean = "" } = useParams();
   const { data, isLoading } = useContext(ShearchContext);
   const navigate = useNavigate();
 
-  // console.log(Object.keys(data).includes(ean));
-  useEffect(() => {
-    // if (Object.keys(data).includes(ean) === false) {
-    //   navigate("/");
-    // }
-  }, []);
+  const keys: string[] = data ? Object.keys(data) : [];
+
+  if (!keys.includes(ean)) {
+    return <ErrorPage />;
+  }
 
   return (
     <MainLayout>

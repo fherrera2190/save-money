@@ -1,50 +1,29 @@
-# React + TypeScript + Vite
+# **Comparador de Precios de Supermercados**  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta es una aplicación desarrollada en **React** que permite buscar productos y comparar sus precios en diferentes supermercados. Está pensada para ayudar especialmente a las personas mayores a armar sus listas de compras al menor costo posible, de manera sencilla y accesible.  
 
-Currently, two official plugins are available:
+## **Características**  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 **Búsqueda de productos**: Busca cualquier producto desde una interfaz fácil de usar.  
+- 🛒 **Comparación de precios**: Muestra los precios de diferentes supermercados para que puedas elegir el lugar más económico.  
+- 📋 **Creación de listas de compra**: Permite armar una lista basada en los precios más convenientes.  
 
-## Expanding the ESLint configuration
+## **Tecnologías utilizadas**  
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**: Framework principal para el desarrollo de la interfaz.  
+- **CSS**: Diseño estilizado y accesible.  
+- **API REST**: Obtención de datos de productos y precios en tiempo real.  
 
-- Configure the top-level `parserOptions` property like this:
+## **Requisitos**  
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. Tener instalado [Node.js](https://nodejs.org/) y `npm` o `yarn`.  
+2. Acceso a una API con datos de productos (o datos simulados para pruebas).  
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## **Instalación**  
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Clona este repositorio e instala las dependencias necesarias:  
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+```bash
+git clone https://github.com/tu_usuario/comparador-precios.git
+cd comparador-precios
+npm install

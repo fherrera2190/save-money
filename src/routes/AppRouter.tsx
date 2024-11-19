@@ -2,17 +2,19 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { SearchPage } from "../pages/SearchPage";
 import { ViewProductsPage } from "../pages/ViewProductsPage";
 import { SearchProvider } from "../context/SearchProvider";
+import { ErrorPage } from "../pages/ErrorPage";
 
 const router = createBrowserRouter(
   [
     {
       path: "/",
       element: <SearchPage />,
+      errorElement: <ErrorPage />,
     },
     {
       path: "/products/:ean",
       element: <ViewProductsPage />,
-      errorElement: <h1>Producto no encontrado</h1>,
+      errorElement: <ErrorPage />,
     },
   ],
   {
