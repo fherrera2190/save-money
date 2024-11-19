@@ -1,8 +1,7 @@
 import { useState } from "react";
- interface SearchProps {
+interface SearchProps {
   getSearch: (text: string) => void;
 }
-
 
 export const Search = ({ getSearch }: SearchProps) => {
   const [formData, setFormData] = useState({
@@ -25,25 +24,7 @@ export const Search = ({ getSearch }: SearchProps) => {
 
   return (
     <form className="p-3" onSubmit={onFormSubmit}>
-      <label className="sr-only">Search</label>
-      <div className="relative">
-        <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-          <svg
-            className="w-4 h-4 text-gray-500 dark:text-gray-400"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 20 20"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-            />
-          </svg>
-        </div>
+      <div className="flex gap-5 max-sm:flex-col">
         <input
           type="text"
           name="search"
@@ -52,6 +33,29 @@ export const Search = ({ getSearch }: SearchProps) => {
           onChange={handleChange}
           value={formData.search}
         />
+        <div className="max-sm:flex justify-center">
+          <button
+            type="submit"
+            className="hover:border-white/40 flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300 flex gap-3"
+          >
+            <svg
+              className="w-4 h-4 text-gray-500 dark:text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 20"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+              />
+            </svg>
+            Buscar
+          </button>
+        </div>
       </div>
     </form>
   );
