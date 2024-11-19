@@ -1,10 +1,10 @@
 import { createContext } from "react";
-import { Product } from "../interfaces/Product";
+import { ProductFiltered } from "../interfaces/ProductsFiltered";
 
-interface ContextProps {
+export interface ContextProps {
   search: string;
   setSearch: (text: string) => void;
-  data: Product[] | null;
+  data: ProductFiltered;
   isLoading: boolean;
   url: string;
 }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import { Product } from "../interfaces/Product";
 
-export const FilteredProduct = ({ product }) => {
+export const FilteredProduct = ({ product }: { product: Product }) => {
   return (
     <div className="group border-red-100/30 flex w-full max-w-xs flex-col self-center overflow-hidden rounded-lg border bg-gray-700 shadow-md">
       <Link to={`/products/${product.ean}`}>

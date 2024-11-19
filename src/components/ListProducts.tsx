@@ -1,13 +1,11 @@
 import { Product } from "../interfaces/Product";
 import { CardProduct } from "./CardProduct";
 
-
 interface ListProductsProps {
   products: Product[];
-  isLoading: boolean;
 }
 
-export const ListProducts = ({ products }: ListProductsProps) => {
+export const ListProducts = ({ products = [] }: ListProductsProps) => {
   if (!products) return <h1>No hay productos</h1>;
 
   return (

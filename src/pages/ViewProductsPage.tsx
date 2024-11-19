@@ -6,15 +6,17 @@ import { SpinnerLoading } from "../components/SpinnerLoading";
 import { useNavigate, useParams } from "react-router-dom";
 
 export const ViewProductsPage = () => {
-  const { ean } = useParams();
+  const { ean = "" } = useParams();
   const { data, isLoading } = useContext(ShearchContext);
   const navigate = useNavigate();
-  console.log(Object.keys(data).includes(ean));
+
+  // console.log(Object.keys(data).includes(ean));
   useEffect(() => {
     // if (Object.keys(data).includes(ean) === false) {
     //   navigate("/");
     // }
   }, []);
+
   return (
     <MainLayout>
       <>
@@ -27,7 +29,7 @@ export const ViewProductsPage = () => {
           </button>
         </div>
         {!isLoading ? (
-          <ListProducts products={data[ean]} isLoading={isLoading} />
+          <ListProducts products={data[+ean]} />
         ) : (
           <SpinnerLoading />
         )}

@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { ProductFiltered } from "../interfaces/ProductsFiltered";
+import { Product } from "../interfaces/Product";
 
 type Data<T> = T | null;
 type ErrorType = Error | null;
@@ -26,14 +28,17 @@ export const useFetch = <T>(url: string): Params<T> => {
         }
         const jsonData = await resp.json();
 
-        const filteredResults = jsonData?.reduce((acc, item) => {
-          const ean = item.ean;
-          if (!acc[ean]) {
-            acc[ean] = [];
-          }
-          acc[ean].push(item);
-          return acc;
-        }, {});
+        const filteredResults = jsonData?.reduce(
+          (acc: ProductFiltered, item: Product) => {
+            const ean = item.ean;
+            if (!acc[ean]) {
+              acc[ean] = [];
+            }
+            acc[ean].push(item);
+            return acc;
+          },
+          {}
+        );
         setState(filteredResults);
         setHasError(null);
       } catch (error) {
