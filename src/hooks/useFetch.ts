@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ProductFiltered } from "../interfaces/ProductsFiltered";
-import { Product } from "../interfaces/Product";
+import { Product } from "../context/Product";
 
 type Data<T> = T | null;
 type ErrorType = Error | null;

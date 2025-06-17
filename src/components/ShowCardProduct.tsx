@@ -1,4 +1,4 @@
-import { Product } from "../interfaces/Product";
+import { Product } from "../context/Product";
 
 export const ShowCardProduct = ({ product }: { product: Product }) => {
   return (

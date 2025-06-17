@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Product } from "../interfaces/Product";
+import { Product } from "../context/Product";
 
 export const FilteredProduct = ({ product }: { product: Product }) => {
   return (

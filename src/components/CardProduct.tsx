@@ -1,4 +1,4 @@
-import { Product } from "../interfaces/Product";
+import { Product } from "../context/Product";
 import { IconCart } from "./IconCart";
 
 export const CardProduct = ({ product }: { product: Product }) => {
